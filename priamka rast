@@ -1,0 +1,29 @@
+# nieje este dorobeny toto som tiho na hodine
+from PIL import Image
+pic = Image.new("RGB",(100,100),"white")
+print("zadaj suradnice prveho bodu a oddel to ,")
+A = input("zadaj suradnice prveho bodu")
+B= input("zadaj suradnice druheho bodu")
+a1,a2 = A.split(",")
+a1 =int(a1)
+a2 = int(a2)
+b1,b2 = B.split(",")
+b1 = int(b1)
+b2 = int(b2)
+A=(a2-b2)/(a1-b1)
+B=(a2-b1)/(a1-b2)
+pixels = pic.load()
+if abs(a1-b1)>abs(a2-b2):
+    for x in range (100):
+        for y in range(100):
+            y = A*x*B
+            pixels[x,y] = (0,150,0,)
+else:
+    for y in range(a2,b2):
+        x=int(y-B/A)
+        pixels[x,y] = (0,150,0,)
+
+
+
+
+pic.show()
